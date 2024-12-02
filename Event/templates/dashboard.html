@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+  <script src="{% static 'js/dash.js' %}" defer></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>Welcome, <span id="client-name">{{ user.first_name }} {{ user.last_name }}</span>!</h1>
+    </div>
+    <div class="header-right">
+      <div class="nav-icons">
+        <button class="icon-btn" title="Notifications">
+          <i class="fas fa-bell"></i>
+        </button>
+        <button class="icon-btn" title="Profile Settings">
+          <i class="fas fa-user"></i>
+        </button>
+        <button class="icon-btn logout-btn" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search for events...">
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <h2>Quick Links</h2>
+      <div class="links-container">
+        <div class="quick-link">
+          <i class="fas fa-calendar-check"></i>
+          <h3>My Bookings</h3>
+          <p>View and manage your booked events.</p>
+          <a href="/my-bookings" class="btn-primary">Go to My Bookings</a>
+        </div>
+        <div class="quick-link">
+          <i class="fas fa-calendar-plus"></i>
+          <h3>Explore Events</h3>
+          <p>Find new and exciting events near you.</p>
+          <a href="/explore" class="btn-primary">Explore Now</a>
+        </div>
+        <div class="quick-link">
+          <i class="fas fa-clock"></i>
+          <h3>Upcoming Events</h3>
+          <p>Check out events happening soon.</p>
+          <a href="/upcoming" class="btn-primary">View Events</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

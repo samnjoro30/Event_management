@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Welcome, Admin</h1>
+  </header>
+
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Quick Links</h3>
+      <button id="add-event-btn">Add Event</button>
+      <button id="view-events-btn">View Uploaded Events</button>
+      <button id="view-bookings-btn">View Booked Tickets</button>
+      <button id="view-stats-btn">View Statistics</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Add Event Section -->
+      <section id="add-event-section" class="admin-section">
+        <h2>Add Event</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div>
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" name="name" required>
+          </div>
+          <div>
+            <label for="event-image">Event Image:</label>
+            <input type="file" id="event-image" name="image" accept="image/*" required>
+          </div>
+          <div>
+            <label for="event-description">Description:</label>
+            <textarea id="event-description" name="description" required></textarea>
+          </div>
+          <div>
+            <label for="event-tickets">Tickets Available:</label>
+            <input type="number" id="event-tickets" name="tickets_available" required>
+          </div>
+          <div>
+            <label for="event-price">Price per Booking:</label>
+            <input type="number" id="event-price" name="price" step="0.01" required>
+          </div>
+          <div>
+            <label for="event-location">Location:</label>
+            <input type="text" id="event-location" name="location" required>
+          </div>
+          <button type="submit">Add Event</button>
+        </form>
+      </section>
+
+      <!-- View Uploaded Events Section -->
+      <section id="view-events-section" class="admin-section hidden">
+        <h2>Uploaded Events</h2>
+        <input type="text" id="search-events" placeholder="Search events..." class="search-bar">
+        <div class="events-list">
+          {% for event in events %}
+          <div class="event-card">
+            <img src="{{ event.image.url }}" alt="{{ event.name }}">
+            <h3>{{ event.name }}</h3>
+            <p>{{ event.description }}</p>
+            <p>Tickets Available: {{ event.tickets_available }}</p>
+            <p>Price: ${{ event.price }}</p>
+            <p>Location: {{ event.location }}</p>
+            <button class="edit-btn" data-id="{{ event.id }}">Edit</button>
+            <button class="delete-btn" data-id="{{ event.id }}">Delete</button>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- View Booked Tickets Section -->
+      <section id="view-bookings-section" class="admin-section hidden">
+        <h2>Booked Tickets</h2>
+        <button id="export-bookings-btn" class="export-btn">Export to CSV</button>
+        <div class="bookings-list">
+          {% for booking in bookings %}
+          <div class="booking-card">
+            <p>Event: {{ booking.event.name }}</p>
+            <p>User: {{ booking.user.username }}</p>
+            <p>Tickets Booked: {{ booking.tickets_booked }}</p>
+            <p>Booking Date: {{ booking.booking_date }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section id="view-stats-section" class="admin-section hidden">
+        <h2>Statistics</h2>
+        <div class="stats-container">
+          <div class="stat">
+            <h3>Total Events</h3>
+            <p>{{ stats.total_events }}</p>
+          </div>
+          <div class="stat">
+            <h3>Total Tickets Sold</h3>
+            <p>{{ stats.total_tickets_sold }}</p>
+          </div>
+          <div class="stat">
+            <h3>Total Revenue</h3>
+            <p>${{ stats.total_revenue }}</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script defer src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>

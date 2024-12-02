@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management - Login/Register</title>
+  <link rel="stylesheet" href="{% static 'css/register_login.css' %}">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Panel -->
+    <div class="panel">
+      <div id="welcome-login" class="panel-content active">
+        <h1>Welcome to Event Booking</h1>
+        <p>Manage your events with ease. Secure, Fast, and Reliable.</p>
+        <button id="switch-to-register">Don't have an account? Register</button>
+      </div>
+      <div id="welcome-register" class="panel-content">
+        <h1>Discover More Event Booking by Registering</h1>
+        <p>Sign up to manage your bookings effortlessly. Get Started Now!</p>
+        <p>Register to book and reserve your tickets for Events today</p>
+        <button id="switch-to-login">Already have an account? Login</button>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="form-container">
+      <!-- Login Form -->
+      <form id="login-form" class="form active" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="login" value="true">
+        <h2>Login</h2>
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="Enter your email">
+        <label>Password</label>
+        <input type="password" name="password" required id="login-password" placeholder="Enter your password">
+        <div class="show-password">
+            <input type="checkbox" id="toggleLoginPassword" onclick="togglePasswordVisibility('login-password')">
+            <label for="toggleLoginPassword">Show Password</label>
+        </div>
+        <button type="submit">Login</button>
+        <a href="#">Forgot your password?</a>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="form" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="register" value="true">
+        <h2>Register</h2>
+      
+        <!-- Personal Information Section -->
+        <div id="personal-info-section">
+          <label>First Name</label>
+          <input type="text" name="first_name" required placeholder="Enter your first name">
+          <label>Last Name</label>
+          <input type="text" name="last_name" required placeholder="Enter your last name">
+          <label>Date of Birth</label>
+          <input type="date" id="dob" name="dob" required>
+          <div id="age-validation-message" style="color: red; font-size: 14px; margin-top: -10px; margin-bottom: 10px;"></div>
+          <button type="sn" id="next-to-security">Next</button>
+        </div>
+      
+        <!-- Security Section -->
+        <div id="security-section" style="display: none;">
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="Enter your email">
+          <label>Password</label>
+          <input type="password" name="password1" required id="register-password" placeholder="Create a password">
+          <label>Confirm Password</label>
+          <input type="password" name="password2" required placeholder="Confirm your password">
+          <div class="show-password">
+              <input type="checkbox" id="toggleRegisterPassword" onclick="togglePasswordVisibility('register-password')">
+              <label for="toggleRegisterPassword">Show Password</label>
+          </div>   
+          <div id="sec-section" style="color: red; font-size: 14px; margin-top: -10px; margin-bottom: 10px;"></div>
+          <button type="sn" id="prev-to-personal">Previous</button>
+          <button type="button" id="next-to-confirm">Next</button>
+          </div>
+
+
+          <div id="confirmation-section" style="display: none;">
+            <h3>Step 3: Confirm & Submit</h3>
+            <p>Review your information and submit.</p>
+          
+            <button type="button" id="prev-to-security">Previous</button>
+            <button type="submit">Register</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'js/script.js' %}" defer></script>
+</body>
+</html>

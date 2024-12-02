@@ -1,0 +1,181 @@
+/* Font Awesome Icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+.top-header {
+  background: #cbd3dc; /* Dark blue background */
+  color: rgb(19, 6, 6);
+  text-align: center;
+  padding: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeInDown 1.5s ease-in-out; /* Header animation */
+}
+
+/* General Header Styles */
+.main-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #090e14, #0056b3);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease-in-out; /* Animation on header */
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo with Icon */
+.main-header .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.main-header .logo i {
+  font-size: 28px; /* Icon size */
+  margin-right: 10px;
+  color: #ffdd57; /* Icon color */
+  animation: spin 3s linear infinite; /* Add spinning animation */
+}
+
+.main-header .logo span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Spinning Animation for Logo Icon */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Navigation Menu */
+.main-header .nav-menu ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header .nav-menu ul li a {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease; /* Smooth animation on hover */
+}
+
+.main-header .nav-menu ul li a:hover {
+  color: #ffdd57; /* Hover color change */
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Action Buttons with Icons */
+.main-header .auth-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.main-header .btn-login,
+.main-header .btn-register {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.main-header .btn-login {
+  background-color: white;
+  color: #007bff;
+  border: 2px solid white;
+}
+
+.main-header .btn-login:hover {
+  background-color: #ffdd57;
+  color: #007bff;
+  transform: scale(1.1); /* Button zoom animation */
+}
+
+.main-header .btn-register {
+  background-color: #ffdd57;
+  color: #007bff;
+}
+
+.main-header .btn-register:hover {
+  background-color: white;
+  color: #007bff;
+  transform: scale(1.1); /* Button zoom animation */
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover span {
+  background: #ffdd57;
+}
+
+@media (max-width: 768px) {
+  .main-header .nav-menu ul {
+    display: none; /* Hide on small screens */
+  }
+
+  .main-header .hamburger-menu {
+    display: flex;
+  }
+
+  .main-header.active .nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    background: #007bff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .main-header.active .nav-menu ul li {
+    text-align: center;
+  }
+}
