@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+    <h1>Edit Event</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" name="name" value="{{ event.name }}" required>
+        </div>
+        <div>
+            <label for="event-image">Event Image:</label>
+            <input type="file" id="event-image" name="image" accept="image/*">
+            <img src="{{ event.image_url }}" alt="{{ event.name }}" style="width: 100px; height: auto;">
+        </div>
+        <div>
+            <label for="event-description">Description:</label>
+            <textarea id="event-description" name="description" required>{{ event.description }}</textarea>
+        </div>
+        <div>
+            <label for="event-tickets">Tickets Available:</label>
+            <input type="number" id="event-tickets" name="tickets_available" value="{{ event.tickets_available }}" required>
+        </div>
+        <div>
+            <label for="event-price">Price per Booking:</label>
+            <input type="number" id="event-price" name="price" step="0.01" value="{{ event.price }}" required>
+        </div>
+        <div>
+            <label for="event-location">Location:</label>
+            <input type="text" id="event-location" name="location" value="{{ event.location }}" required>
+        </div>
+        <button type="submit">Update Event</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* Container for all events */
+#events-container {
+    display: grid; /* Use grid layout for alignment */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between cards */
+    margin: 20px 0;
+    padding: 0 20px; /* Padding to give some spacing from edges */
+  }
+  
+  /* Individual event card styling */
+  .event-card {
+    border: 1px solid #ddd; /* Light border around the card */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* Background color for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Prevent content overflow */
+    text-align: center; /* Center-align text */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Hover effect */
+  }
+  
+  /* Hover effects for the card */
+  .event-card:hover {
+    transform: translateY(-5px); /* Lift the card on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  }
+  
+  /* Event image */
+  .event-card img {
+    width: 100%; /* Full width of the card */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    border-bottom: 1px solid #ddd; /* Line between image and content */
+  }
+  
+  /* Event name */
+  .event-card h3 {
+    margin: 15px 0 10px; /* Spacing around the title */
+    font-size: 1.2em;
+    color: #333; /* Darker text color */
+  }
+  
+  /* Event details */
+  .event-card p {
+    margin: 5px 0;
+    color: #555; /* Subtle text color */
+    font-size: 0.9em;
+    line-height: 1.5; /* Better readability */
+  }
+  
+  /* Adjust spacing for smaller devices */
+  @media screen and (max-width: 768px) {
+    #events-container {
+      grid-template-columns: 1fr; /* Single column for small screens */
+      gap: 15px; /* Smaller gap */
+    }
+  }
+  

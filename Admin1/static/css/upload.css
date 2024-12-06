@@ -1,0 +1,168 @@
+/* Add Event Form Styles
+.admin-section {
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+  }
+  
+  .admin-section h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .primary-btn {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .primary-btn:hover {
+    background: #0056b3;
+    transition: background 0.3s ease-in-out;
+  }
+  
+    */
+    /* Form Styling */
+form {
+
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px; /* Slightly more rounded corners */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Limit width for better readability */
+  margin: 20px auto; /* Center the form */
+}
+
+form div {
+  margin-bottom: 20px; /* Increased space between fields */
+}
+
+form label {
+  font-weight: bold;
+  font-size: 1rem; /* Slightly larger label */
+  color: #333; /* Darker color for better contrast */
+  margin-bottom: 8px;
+  display: block;
+}
+
+form input,
+form select,
+form textarea,
+form button {
+  width: 100%;
+  padding: 12px; /* Increased padding for comfort */
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Rounded borders */
+  font-size: 1rem; /* Larger font size */
+  transition: border-color 0.3s ease;
+}
+
+/* Focus effect for form elements */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); /* Focus glow */
+}
+
+/* Button Styling */
+form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 12px 20px;
+  font-size: 1.1rem; /* Slightly larger button text */
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+form button:active {
+  background-color: #004085;
+}
+
+form .primary-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Add space between each input field */
+  display: flex;
+  flex-direction: column; /* Align label and input vertically */
+}
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  form {
+    padding: 15px;
+    margin: 10px; /* Reduced margin on smaller screens */
+  }
+
+  form label {
+    font-size: 0.9rem; /* Slightly smaller font size on mobile */
+  }
+
+  form input,
+  form select,
+  form textarea {
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 0.95rem; /* Smaller font size */
+  }
+
+  form button {
+    padding: 12px 18px; /* Adjust button padding */
+    font-size: 1rem; /* Adjust button font size */
+  }
+}
+

@@ -1,0 +1,195 @@
+/* General Header Styling */
+.dashboard-header {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between text and icons */
+  padding: 20px 40px;
+  color: rgb(49, 204, 75);
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay for professionalism */
+  border-bottom: 2px solid #4caf50; /* Green border for a polished look */
+}
+
+/* Background Video */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Place the video behind everything */
+  opacity: 0.8; /* Slight dimming effect for readability */
+}
+
+/* Greeting Message (Center Section) */
+.header-center {
+  flex: 1; /* Center aligns the message */
+  text-align: center;
+}
+
+#greeting-message {
+  font-size: 28px;
+  color: #4caf50; /* Professional green color */
+  margin: 0;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide text for animation */
+  border-right: 2px solid #4caf50; /* Cursor effect */
+  display: inline-block;
+  animation: typing 4s steps(30, end) infinite, blink 0.7s step-end infinite;
+  text-transform: capitalize; /* Capitalize the greeting */
+}
+
+/* Icons Section (Right) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between each button */
+  padding-right: 10px; 
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px; /* Spacing between icons */
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.3s;
+}
+
+.icon-btn:hover {
+  color: #4caf50; /* Highlight green on hover */
+  transform: scale(1.2); /* Slight zoom effect */
+}
+
+.logout-btn {
+  color: #ff5252; /* Red for logout */
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.3s;
+}
+#greeting-message {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+/* Popup container */
+.popup {
+  position: absolute;
+  top: 60px; /* Adjust position relative to the icon */
+  right: 10px;
+  width: 300px; /* Wider popup for readability */
+  background: linear-gradient(145deg, #4caf50, #379c3a); /* Attractive gradient background */
+  color: white; /* Text color for better contrast */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px; /* Space around the content */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0; /* Start invisible */
+  transform: translateY(-20px); /* Slight upward shift */
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+/* Visible state */
+.popup.show {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Reset position */
+}
+.hidden {
+  display: none !important; /* Ensures the popup is hidden */
+}
+
+.popup {
+  display: block; /* Ensure block display when visible */
+}
+/* Popup header */
+.popup h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff; /* Keep header white */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Add subtle glow */
+}
+
+/* Profile details */
+.popup p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #f1f1f1; /* Light color for contrast */
+  line-height: 1.5;
+}
+
+/* Highlighted labels */
+.popup p strong {
+  color: #ffdd57; /* Golden yellow for key labels */
+}
+
+/* Close button */
+.close-popup-btn {
+  background-color: #ff5252; /* Bright red for emphasis */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Close button hover effect */
+.close-popup-btn:hover {
+  background-color: #ff0000; /* Deeper red on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Close button active state */
+.close-popup-btn:active {
+  transform: scale(0.95); /* Shrink on click */
+}
+
+/* Optional: Glow animation for popup */
+.popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: -1;
+  filter: blur(8px);
+}
+
+/* Typewriter Effect */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  80%, 100% {
+    width: 100%; /* Adjust to fit the full message */
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #4caf50;
+  }
+}

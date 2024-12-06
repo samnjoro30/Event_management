@@ -23,97 +23,76 @@ document.addEventListener('DOMContentLoaded', () => {
       loginForm.classList.add('active');
     });
   });
+
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const dobInput = document.getElementById("dob"); 
+  //   const nextButton = document.getElementById("next-to-security");
+  //   const ageValidationMessage = document.getElementById("age-validation-message");
+  //   const personalInfoSection = document.getElementById("personal-info-section");
+  //   const securitySection = document.getElementById("security-section");
+  //   const lastSection = document.getElementById("confirmation-section");
+  //   const prevButton = document.getElementById("prev-to-personal");
+  //   const ntc =document.getElementById("next-to-confirm");
+  //   const prevToSecurityButton = document.getElementById("prev-to-security");
+  //   const sec = document.getElementById("sec-section");
+  
+
+  //   // Validate Age and Navigate to Security Section
+  //   nextButton.addEventListener("click", () => {
+  //     const firstName = document.querySelector('input[name="first_name"]').value;
+  //     const lastName = document.querySelector('input[name="last_name"]').value;
+      
+     
+  //       if (!firstName || !lastName) {
+  //         ageValidationMessage.textContent = "Please fill out all fields.";
+  //         return;
+  //       }
+        
+  //     const dobValue = new Date(dobInput.value);
+  //     const today = new Date();
+  //     const age = today.getFullYear() - dobValue.getFullYear();
+  //     const monthDiff = today.getMonth() - dobValue.getMonth();
+  //     const dayDiff = today.getDate() - dobValue.getDate();
+  
+  //     // Adjust age for month/day differences
+  //     if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+  //       age--;
+  //     }
+  
+  //     if (!dobInput.value) {
+  //       ageValidationMessage.textContent = "Please enter your date of birth.";
+  //     } else if (age < 18) {
+  //       ageValidationMessage.textContent = "You must be at least 18 years old to register.";
+  //     } else {
+  //       ageValidationMessage.textContent = ""; // Clear the message
+  //       personalInfoSection.style.display = "none";
+  //       securitySection.style.display = "block";
+  //     }
+  //   });
+    
+  //   ntc.addEventListener("click", (e) => {
+  //       e.preventDefault();
+  //       securitySection.style.display = "none";
+  //       lastSection.style.display = "block";
+  //    });
+  //   prevToSecurityButton.addEventListener("click", () => {
+  //       confirmationSection.style.display = "none";
+  //       securitySection.style.display = "block";
+  //     });
+  //   // Navigate back to the Personal Information Section
+  //   prevButton?.addEventListener("click", () => {
+  //     personalInfoSection.style.display = "block";
+  //     securitySection.style.display = "none";
+  //   });
+  // });
+
+
   
   function togglePasswordVisibility(id) {
     const passwordInput = document.getElementById(id);
     passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
   }
   
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const dobInput = document.getElementById("dob"); 
-    const nextButton = document.getElementById("next-to-security");
-    const ageValidationMessage = document.getElementById("age-validation-message");
-    const personalInfoSection = document.getElementById("personal-info-section");
-    const securitySection = document.getElementById("security-section");
-    const confirmationSection = document.getElementById("confirmation-section");
-    const prevButton = document.getElementById("prev-to-personal");
-    const nextToConfirmButton =document.getElementById("next-to-confirm");
-    const prevToSecurityButton = document.getElementById("prev-to-security");
-    const sec = document.getElementById("sec-section");
-  
-
-    // Validate Age and Navigate to Security Section
-    nextButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      const firstName = document.querySelector('input[name="first_name"]').value;
-      const lastName = document.querySelector('input[name="last_name"]').value;
-      
-        if (!firstName || !lastName) {
-          ageValidationMessage.textContent = "Please fill out all fields.";
-          return;
-        }
-        
-      const dobValue = new Date(dobInput.value);
-      const today = new Date();
-      const age = today.getFullYear() - dobValue.getFullYear();
-      const monthDiff = today.getMonth() - dobValue.getMonth();
-      const dayDiff = today.getDate() - dobValue.getDate();
-  
-      // Adjust age for month/day differences
-      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-        age--;
-      }
-  
-      if (!dobInput.value) {
-        ageValidationMessage.textContent = "Please enter your date of birth.";
-      } else if (age < 18) {
-        ageValidationMessage.textContent = "You must be at least 18 years old to register.";
-      } else {
-        ageValidationMessage.textContent = ""; // Clear the message
-        personalInfoSection.style.display = "none";
-        securitySection.style.display = "block";
-      }
-    });
-
-    nextToConfirmButton.addEventListener("click", (e) => {
-         e.preventDefault();
-        const email = document.querySelector('input[name="email"]').value;
-        const password1 = document.querySelector('input[name="password1"]').value;
-        const password2 = document.querySelector('input[name="password2"]').value;
-      
-        //Basic validation for email and passwords
-        if (!email || !password1 || !password2) {
-          sec.textContent= "fill out all inputs.";
-          return;
-        }
-        if (password1 !== password2) {
-          sec.textContent = "Passwords do not match.";
-          return;
-        }else{
-            sec.textContent = "";
-            securitySection.style.display = "none";
-            confirmationSection.style.display = "block";
-        }
-
-  });
-    prevToSecurityButton.addEventListener("click", (e) => {
-      e.preventDefault();
-        confirmationSection.style.display = "none";
-        securitySection.style.display = "block";
-      });
-    // Navigate back to the Personal Information Section
-    prevButton?.addEventListener("click", (e) => {
-      e.preventDefault();
-      personalInfoSection.style.display = "block";
-      securitySection.style.display = "none";
-    });
-  });
-
-
-
-  
-
 const passwordInput = document.getElementById("register-password");
 const passwordFeedback = document.createElement("div");
 passwordFeedback.style.color = "red";

@@ -28,7 +28,7 @@
     <!-- Right Panel -->
     <div class="form-container">
       <!-- Login Form -->
-      <form id="login-form" class="form active" method="POST">
+      <form id="login-form" class="form active" method="POST" action="{% url 'auth' %}">
         {% csrf_token %}
         <input type="hidden" name="login" value="true">
         <h2>Login</h2>
@@ -45,11 +45,13 @@
       </form>
 
       <!-- Register Form -->
-      <form id="register-form" class="form" method="POST">
+      <form id="register-form" class="form" method="POST" action="{% url 'auth' %}">
+       
         {% csrf_token %}
         <input type="hidden" name="register" value="true">
+       
         <h2>Register</h2>
-      
+       
         <!-- Personal Information Section -->
         <div id="personal-info-section">
           <label>First Name</label>
@@ -59,7 +61,7 @@
           <label>Date of Birth</label>
           <input type="date" id="dob" name="dob" required>
           <div id="age-validation-message" style="color: red; font-size: 14px; margin-top: -10px; margin-bottom: 10px;"></div>
-          <button type="sn" id="next-to-security">Next</button>
+          <button type="button" id="next-to-security">Next</button>
         </div>
       
         <!-- Security Section -->
@@ -68,14 +70,15 @@
           <input type="email" name="email" required placeholder="Enter your email">
           <label>Password</label>
           <input type="password" name="password1" required id="register-password" placeholder="Create a password">
+          <div class="show-password">
+            <input type="checkbox" id="toggleRegisterPassword" onclick="togglePasswordVisibility('register-password')">
+            <label for="toggleRegisterPassword">Show Password</label>
+        </div> 
           <label>Confirm Password</label>
           <input type="password" name="password2" required placeholder="Confirm your password">
-          <div class="show-password">
-              <input type="checkbox" id="toggleRegisterPassword" onclick="togglePasswordVisibility('register-password')">
-              <label for="toggleRegisterPassword">Show Password</label>
-          </div>   
+          
           <div id="sec-section" style="color: red; font-size: 14px; margin-top: -10px; margin-bottom: 10px;"></div>
-          <button type="sn" id="prev-to-personal">Previous</button>
+          <button type="button" id="prev-to-personal">Previous</button>
           <button type="button" id="next-to-confirm">Next</button>
           </div>
 
@@ -85,11 +88,39 @@
             <p>Review your information and submit.</p>
           
             <button type="button" id="prev-to-security">Previous</button>
+
             <button type="submit">Register</button>
+            <div id="message-container">
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            
           </div>
       </form>
     </div>
   </div>
   <script src="{% static 'js/script.js' %}" defer></script>
+  <script src="{% static 'js/next_prev.js' %}"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const messageContainer = document.getElementById('message-container');
+      const successMessages = document.querySelectorAll('.message.success');
+  
+      if (successMessages.length > 0) {
+        // Delay for 2 seconds (2000 ms)
+        setTimeout(() => {
+          // Redirect after the delay
+          const redirectURL = "{{ redirect_url|default:'/' }}"; // Replace '/' with your desired URL
+          window.location.href = redirectURL;
+        }, 2000);
+      }
+    });
+  </script>
+  
 </body>
 </html>
+

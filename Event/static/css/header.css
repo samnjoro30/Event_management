@@ -1,21 +1,41 @@
 /* Font Awesome Icons */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-.top-header {
-  background: #cbd3dc; /* Dark blue background */
-  color: rgb(19, 6, 6);
+/* .top-header {
+  background:  linear-gradient(90deg, #007bff, #6a11cb);/* Dark blue background */
+  /* color: rgb(19, 6, 6);
   text-align: center;
-  padding: 15px 0;
+  padding: 20px 0;
+  margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px
+} */ 
+
+/* .top-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1.5s ease-in-out;  Header animation 
+} */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.top-header h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  animation: fadeInDown 1.5s ease-in-out; /* Header animation */
+/* Container Alignment */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* Add some padding for better responsiveness */
 }
 
 /* General Header Styles */

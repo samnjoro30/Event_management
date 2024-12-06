@@ -10,27 +10,52 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="{% static 'css/dash.css' %}">
-  <script src="{% static 'js/dash.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'css/fetch.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header_dash.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/body.css' %}">
 </head>
 <body>
   <header class="dashboard-header">
-    <div class="header-left">
-      <h1>Welcome, <span id="client-name">{{ user.first_name }} {{ user.last_name }}</span>!</h1>
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="{% static 'images/m1.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  
+    <!-- Greeting Message Section -->
+    <div class="header-center">
+      <h1 id="greeting-message" class="typewriter">
+        {% if user.is_authenticated %}
+          Good {{ greeting }}, {{ user.first_name }}! Welcome to your dashboard.
+        {% else %}
+          Welcome, Guest!
+        {% endif %}
+      </h1>
     </div>
+  
+    <!-- Icons Section -->
     <div class="header-right">
       <div class="nav-icons">
         <button class="icon-btn" title="Notifications">
           <i class="fas fa-bell"></i>
         </button>
-        <button class="icon-btn" title="Profile Settings">
+        <button class="icon-btn profile-btn" title="Profile Settings">
           <i class="fas fa-user"></i>
         </button>
         <button class="icon-btn logout-btn" title="Logout">
           <i class="fas fa-sign-out-alt"></i>
         </button>
       </div>
+      <!-- Profile Popup -->
+      <div id="profile-popup" class="popup hidden">
+        <h3>User Profile</h3>
+        <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <button class="close-popup-btn">Close</button>
+      </div>
     </div>
   </header>
+  
 
   <main class="dashboard-main">
     <!-- Search Bar -->
@@ -65,6 +90,104 @@
         </div>
       </div>
     </section>
-  </main>
+    <section >
+      <div id="events-container">
+        <!-- Events will be dynamically loaded here -->
+      </div>
+      <div id="bookings-container">
+        <!-- Bookings for a specific event will be dynamically loaded here -->
+      </div>
+      
+    </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h4>Event Management</h4>
+          <p>Making your event planning seamless and hassle-free.</p>
+        </div>
+    
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p><i class="fas fa-envelope"></i>Email: <a href="#" >support@eventmanagement.com</a></p>
+          <p><i class="fas fa-phone"></i>Phone: <a href="#">+254 799169720</a></p>
+          <p><i class="fas fa-map-marker-alt"></i>Address: Nairobi, karen street</p>
+        </div>
+    
+        <!-- Social Media Links -->
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <!-- Copyright Section -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 Event Management. All Rights Reserved.</p>
+      </div>
+    </footer>
+    
+    
+  <script src="{% static 'js/dash.js' %}" ></script>
+  <script src="{% static 'js/booked.js' %}" ></script>
+  <script>
+    async function fetchEvents() {
+    try {
+      const response = await fetch("{% url 'api_events' %}"); // Replace with the API URL
+      const events = await response.json();
+  
+    // Map the events to the UI
+      const eventsContainer = document.getElementById("events-container");
+      events.forEach(event => {
+        const eventCard = `
+          <div class="event-card">
+            <img src="${event.image_url}" alt="${event.name}">
+            <h3>${event.name}</h3>
+            <p>${event.description}</p>
+            <p><strong>Tickets Available:</strong> ${event.tickets_available}</p>
+            <p><strong>Price:</strong> $${event.price}</p>
+            <p><strong>Location: </strong>${event.location}</p>
+            <button class="btn-primary book-btn" data-event-id="${event.id}">Book Now</button>
+          </div>
+       `;
+        eventsContainer.innerHTML += eventCard;
+        });
+        const bookButtons = document.querySelectorAll(".book-btn");
+        bookButtons.forEach(button => {
+          button.addEventListener("click", bookEvent);
+        });
+      } catch (error) {
+    console.error("Error fetching events:", error);
+    }
+   }
+  
+  // Call fetchEvents when the page loads
+    window.onload = fetchEvents;
+  </script> 
+  <script>
+    // Add the CSRF token to the cookie (if not already present)
+    document.cookie = `csrftoken={{ csrf_token }}`;
+</script>
+
 </body>
 </html>
+
+

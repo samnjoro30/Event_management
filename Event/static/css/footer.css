@@ -17,6 +17,7 @@
   }
   
   .footer-section {
+    text-align: left;
     flex: 1;
     min-width: 200px;
     margin-bottom: 20px;
@@ -36,6 +37,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex;
+    align-items: center;
   }
   
   .footer-section ul li {
