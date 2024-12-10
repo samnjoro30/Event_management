@@ -1,20 +1,45 @@
 from django.shortcuts import render,  redirect
 from django.contrib import messages
 from django.db.models import Sum
-from .models import Event,  Booking
+from .models import Event, Booking
+from django.db.models import F
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+import json
+import csv
 import cloudinary
 import cloudinary.uploader
+
+import logging
+
+logger = logging.getLogger(__name__)
+
 # Create your views here.
 cloudinary.config(
     cloud_name="denau3vzn", 
     api_key="518891139551556",        
     api_secret="kD7QghpndGh5eVBirF2HQiyw9_0"  
 )
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('management')  # Redirect to dashboard after successful login
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
+# Logout View
+def logout_view(request):
+    logout(request)
+    return redirect('login') 
+@login_required
 def management(request):
     
     category_filter = request.GET.get("category", "").strip()
@@ -30,6 +55,15 @@ def management(request):
 
     categories = ['music', 'sports', 'technology', 'art', 'education', 'others']
     events_by_category = {category: events.filter(category=category) for category in categories}
+
+    bookings = Booking.objects.select_related("event", "user").order_by("-booking_date")
+
+    # View Stats Logic
+    stats = {
+        "total_events": Event.objects.count(),
+        "total_tickets_sold": Booking.objects.aggregate(Sum('tickets_booked'))['tickets_booked__sum'] or 0,
+        "total_revenue": Booking.objects.annotate(revenue=F('tickets_booked') * F('event__price')).aggregate(Sum('revenue'))['revenue__sum'] or 0,
+    }
 
     if request.method == "POST":
 
@@ -74,6 +108,8 @@ def management(request):
         "selected_category": category_filter,
         "events_by_category": events_by_category,
         "selected_category": category_filter,
+        "bookings": bookings,
+        "stats": stats,
         })
 
 from django.shortcuts import get_object_or_404
@@ -120,27 +156,45 @@ def delete_event(request, event_id):
 @login_required
 def book_event(request, event_id):
     if request.method == "POST":
+        logger.debug(request.body)
+        logger.debug(f"Request headers: {request.headers}")
+        logger.debug(f"Request body: {request.body}")
+
         try:
+            data = json.loads(request.body)
+            logger.debug(f"Request body: {request.body}")
+            logger.debug(f"Parsed JSON: {json.loads(request.body)}")
+            tickets_requested = int(data.get("tickets", 0))
+
             event = get_object_or_404(Event, id=event_id)
-            tickets_requested = int(request.POST.get("tickets"))
+            
+            if Booking.objects.filter(user=request.user, event=event).exists():
+                return JsonResponse({"error": "You have already booked this event."}, status=400)
 
             if tickets_requested > event.tickets_available:
+                logger.warning("Not enough tickets available")
                 return JsonResponse({"error": "Not enough tickets available"}, status=400)
 
             # Create a new booking
-            Booking.objects.create(
+            booking = Booking.objects.create(
                 user=request.user,
                 event=event,
                 tickets_booked=tickets_requested
             )
-
+            logger.debug(f"Booking created: {booking.id}")
             # Update tickets available
             event.tickets_available -= tickets_requested
             event.save()
-
+            logger.debug(f"Tickets updated. Remaining: {event.tickets_available}")
             return JsonResponse({"message": "Booking successful"}, status=200)
 
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON Decode Error: {str(e)}")
+            return JsonResponse({"error": "Invalid JSON payload"}, status=400)
+
+
         except Exception as e:
+            logger.error(f"Unexpected error: {str(e)}")
             return JsonResponse({"error": str(e)}, status=400)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
@@ -149,3 +203,68 @@ def book_event(request, event_id):
 def view_bookings(request):
     bookings = Booking.objects.select_related("event", "user").order_by("-booking_date")
     return render(request, "admin.html", {"bookings": bookings})
+
+@login_required
+def get_user_bookings(request):
+    try:
+        # Fetch bookings related to the logged-in user
+        bookings = Booking.objects.filter(user=request.user).select_related("event")
+        
+        booking_data = []
+        for booking in bookings:
+            booking_data.append({
+                "event_name": booking.event.name,
+                "event_date": booking.event.date,
+                "event_location": booking.event.location,
+                "tickets_booked": booking.tickets_booked,
+                "event_image_url": booking.event.image_url,  # Add if you have this field
+            })
+        
+        return JsonResponse({"bookings": booking_data}, status=200)
+    
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+
+def export_bookings_csv(request):
+    bookings = Booking.objects.select_related("event", "user").order_by("-booking_date")
+
+    # Create the HTTP response with CSV headers
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = 'attachment; filename="bookings.csv"'
+
+    # Create CSV writer
+    writer = csv.writer(response)
+    writer.writerow(["Event", "User", "Tickets Booked", "Booking Date"])
+
+    for booking in bookings:
+        writer.writerow([
+            booking.event.name,
+            booking.user.username,
+            booking.tickets_booked,
+            booking.booking_date,
+        ])
+
+    return response
+
+
+from django.http import JsonResponse
+from django.db.models import Sum, F
+
+@login_required
+def get_stats(request):
+    """
+    API endpoint to fetch statistics for real-time graphs.
+    """
+    stats = {
+        "revenue": list(Booking.objects.annotate(revenue=F('tickets_booked') * F('event__price'))
+                        .values_list('revenue', flat=True)),  # Replace with aggregated data if needed
+        "revenue_labels": list(Event.objects.values_list('date', flat=True)),  # Replace with months or other labels
+        "bookings": list(Booking.objects.values_list('tickets_booked', flat=True)),  # Example bookings data
+        "booking_labels": list(Event.objects.values_list('name', flat=True)),  # Event names for labels
+        "users": [
+            User.objects.filter(is_active=True).count(),
+            User.objects.filter(is_active=False).count()
+        ],
+    }
+    return JsonResponse(stats)

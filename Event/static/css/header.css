@@ -1,25 +1,25 @@
 /* Font Awesome Icons */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-/* .top-header {
+.top-header {
   background:  linear-gradient(90deg, #007bff, #6a11cb);/* Dark blue background */
-  /* color: rgb(19, 6, 6);
+  color: rgb(19, 6, 6);
   text-align: center;
   padding: 20px 0;
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px
-} */ 
+} 
 
-/* .top-header h1 {
+.top-header h1 {
   font-size: 32px;
   font-weight: 700;
   margin: 0;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  animation: fadeInDown 1.5s ease-in-out;  Header animation 
-} */
+  animation: fadeInDown 1.5s ease-in-out;
+} 
 @keyframes fadeInDown {
   0% {
     opacity: 0;

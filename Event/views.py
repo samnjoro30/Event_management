@@ -36,7 +36,7 @@ def auth(request):
             if user:
                 login(request, user)
                 messages.success(request, 'Logged in successfully.')
-                return redirect('dash')  # Replace 'dashboard' with your dashboard URL
+                return redirect('dash') 
             else:
                 messages.error(request, 'Invalid email or password.')
         
@@ -179,3 +179,5 @@ def generate_email_content(user):
     </body>
     </html>
     """, first_name=user.first_name)
+
+

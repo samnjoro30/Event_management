@@ -8,11 +8,26 @@
   <link rel="stylesheet" href="{% static 'css/admin.css' %}">
   <link rel="stylesheet" href="{% static 'css/view.css' %}">
   <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+  <link rel="stylesheet" href="{% static 'css/book.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
   <header class="admin-header">
-    <h1>Admin Dashboard</h1>
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="{% static 'images/m3.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="header-content">
+      <h1>Admin</h1>
+      {% if user.is_authenticated %}
+        <h1>Welcome, {{ user.email }}</h1>
+        
+      {% else %}
+        <p>You need to log in to access the dashboard.</p>
+      {% endif %}
+    </div>
   </header>
+  
 
   <div class="admin-container">
     <!-- Sidebar -->
@@ -167,7 +182,7 @@
                         <h3>{{ event.name }}</h3>
                         <p>{{ event.description }}</p>
                         <p><strong>Tickets:</strong> {{ event.tickets_available }}</p>
-                        <p><strong>Price:</strong> ${{ event.price }}</p>
+                        <p><strong>Price:</strong> {{ event.price }}</p>
                         <p><strong>Location:</strong> {{ event.location }}</p>
                         <p><strong>Date:</strong> {{ event.date }}</p>
                         <a href="{% url 'edit_event' event.id %}" class="edit-btn">Edit</a>
@@ -190,13 +205,13 @@
       <!-- booking-->
       <section id="view-bookings-section" class="admin-section hidden">
         <h2>Booked Tickets</h2>
-        <button id="export-bookings-btn" class="export-btn">Export to CSV</button>
+        
         <div class="bookings-list">
           {% if bookings %}
             {% for booking in bookings %}
             <div class="booking-card">
               <p><strong>Event:</strong> {{ booking.event.name }}</p>
-              <p><strong>User:</strong> {{ booking.user.username }}</p>
+              <p><strong>User:</strong> {{ booking.user.email }}</p>
               <p><strong>Tickets:</strong> {{ booking.tickets_booked }}</p>
               <p><strong>Date:</strong> {{ booking.booking_date }}</p>
             </div>
@@ -220,13 +235,28 @@
           </div>
           <div class="stat">
             <h3>Total Revenue</h3>
-            <p>${{ stats.total_revenue }}</p>
+            <p>Ksh{{ stats.total_revenue }}</p>
           </div>
+          <div class="stat">
+            <h2>Revenue</h2>
+            <canvas id="revenueChart"></canvas>
+        </div>
+        <div class="stat">
+            <h2>Bookings</h2>
+            <canvas id="bookingsChart"></canvas>
+        </div>
+        <div class="stat">
+            <h2>Users</h2>
+            <canvas id="usersChart"></canvas>
+        </div>
         </div>
       </section>
     </main>
   </div>
 
-  <script defer src="{% static 'js/admin.js' %}"></script>
+  <script  src="{% static 'js/admin.js' %}"></script>
+  <script  src="{% static 'js/charts.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>

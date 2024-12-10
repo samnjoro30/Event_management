@@ -14,6 +14,7 @@ class EventListAPIView(APIView):
                 "description": event.description,
                 "tickets_available": event.tickets_available,
                 "price": float(event.price),
+                "date": event.date,
                 "location": event.location,
                 "image_url": event.image_url,
                 "created_at": event.created_at,

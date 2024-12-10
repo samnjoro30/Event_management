@@ -1,0 +1,99 @@
+/* General Section Styling */
+#view-bookings-section {
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
+  }
+  h3 {
+    color: blue;
+  }
+  #view-bookings-section h2 {
+    font-size: 28px;
+    color: #4ed017;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family:'Roboto', 'Arial', sans-serif;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  /* Bookings List */
+  .bookings-list {
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+  /* Booking Card Styling */
+  .booking-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: calc(100% - 40px);
+    max-width: 300px;
+    display: flex;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    color: #444;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .booking-card p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #444;
+  }
+  
+  .booking-card strong {
+    color: #040000;
+  }
+  
+  .booking-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* No Bookings Message */
+  .no-bookings-message {
+    color: #777;
+    font-size: 16px;
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .booking-card {
+      width: calc(100% - 30px);
+    }
+  }
+  
+  .booking-card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.booking-card a:hover {
+    background-color: #1d6fa5;
+}

@@ -105,21 +105,6 @@
   <script src="{% static 'js/script.js' %}" defer></script>
   <script src="{% static 'js/next_prev.js' %}"></script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const messageContainer = document.getElementById('message-container');
-      const successMessages = document.querySelectorAll('.message.success');
-  
-      if (successMessages.length > 0) {
-        // Delay for 2 seconds (2000 ms)
-        setTimeout(() => {
-          // Redirect after the delay
-          const redirectURL = "{{ redirect_url|default:'/' }}"; // Replace '/' with your desired URL
-          window.location.href = redirectURL;
-        }, 2000);
-      }
-    });
-  </script>
   
 </body>
 </html>

@@ -5,20 +5,56 @@ body {
     padding: 0;
     background-color: #f5f5f5;
   }
+
+  /*header*/
+/* Style the header */
+header.admin-header {
+  position: relative; /* To position content over the video */
+  height: 250px; /* Adjust as needed */
+  overflow: hidden; /* Hide overflow from the video */
+  color: white;
+}
+
+/* Background video styles */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the header without distortion */
+  z-index: -1; /* Places the video behind the content */
+}
+
+/* Content styling inside the header */
+.header-content {
+  position: relative; /* Keeps content above the video */
+  z-index: 1; /* Ensure the content is above the video */
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+
+/**/
   
-  header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
+
+.hidden {
+    display: none;
   }
-  
-  h1 {
-    margin: 0;
+.visible {
+    display: block;
   }
   
   /* Admin Container */
-  .admin-container {
+.admin-container {
     display: flex;
     min-height: 100vh;
   }
@@ -68,85 +104,6 @@ body {
     display: block;
   }
   
-  /* form {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  form div {
-    margin-bottom: 15px;
-  }
-  
-  form label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  form input, form textarea, form button {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  form button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #0056b3;
-  }
-   */
-  /* .events-list, .bookings-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  } */
-  
-  /* .event-card, .booking-card {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: calc(33.333% - 20px);
-  } */
-  /* Search Bar */
-/* .search-bar {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  } */
-  
-  /* Buttons for Edit/Delete */
-  /* .edit-btn, .delete-btn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  } */
-  
-  /* .edit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-  }
-  
-  .delete-btn:hover {
-    background-color: #a71d2a;
-  } */
   
   /* Statistics Section */
   .stats-container {
@@ -154,36 +111,51 @@ body {
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
+    margin: 20px 0;
   }
   
   .stat {
     background: white;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     width: calc(33.333% - 20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
-  .stat h3 {
+  .stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+  .stat h2{
+    font-size: 24px;
     margin-bottom: 10px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
   }
-  
-  .export-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
+  .stat h3 {
+    margin-bottom: 15px;
+    color: #0056b3;
+    font-size: 20px;
+    font-weight: bold;
   }
-  
-  .export-btn:hover {
-    background-color: #218838;
+  .stat p {
+    font-size: 16px;
+    color: #555;
   }
-  
-  /* .hidden {
-    display: none;
+  /* Responsive Design */
+@media (max-width: 768px) {
+  .stat {
+      width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat {
+      width: 100%;
+  }
 }
 
 .event-card, .booking-card {
@@ -224,11 +196,3 @@ body {
   color: white;
   cursor: pointer;
 }
-.stat {
-    text-align: center;
-    margin: 10px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-} */
