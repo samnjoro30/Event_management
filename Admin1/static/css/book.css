@@ -57,8 +57,12 @@
   
   .booking-card strong {
     color: #040000;
+    font-weight: bold;
   }
-  
+  .booking-card span {
+    color: #0056b3; /* Highlight fetched data */
+    font-weight: 500;
+}
   .booking-card:hover {
     transform: translateY(-5px);
     transition: transform 0.2s ease, box-shadow 0.2s ease;

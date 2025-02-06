@@ -106,14 +106,17 @@ a {
   
   
   /* Statistics Section */
-  .stats-container {
+   .stats-container {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
     margin: 20px 0;
   }
-  
+  .stat canvas {
+    width: 100%; /* Take the full width of the container */
+    height: 400px; /* Set a fixed height for better visibility */
+}
   .stat {
     background: white;
     padding: 20px;
@@ -144,7 +147,8 @@ a {
   .stat p {
     font-size: 16px;
     color: #555;
-  }
+  } 
+  
   /* Responsive Design */
 @media (max-width: 768px) {
   .stat {

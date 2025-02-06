@@ -165,6 +165,7 @@ def book_event(request, event_id):
             logger.debug(f"Request body: {request.body}")
             logger.debug(f"Parsed JSON: {json.loads(request.body)}")
             tickets_requested = int(data.get("tickets", 0))
+            payment_method = data.get("payment_method")
 
             event = get_object_or_404(Event, id=event_id)
             
@@ -175,11 +176,16 @@ def book_event(request, event_id):
                 logger.warning("Not enough tickets available")
                 return JsonResponse({"error": "Not enough tickets available"}, status=400)
 
+            if payment_method not in ["mpesa", "event_day"]:
+                return JsonResponse({"error": "Invalid payment method"}, status=400)
+
+
             # Create a new booking
             booking = Booking.objects.create(
                 user=request.user,
                 event=event,
-                tickets_booked=tickets_requested
+                tickets_booked=tickets_requested,
+                payment=  payment_method
             )
             logger.debug(f"Booking created: {booking.id}")
             # Update tickets available
@@ -218,6 +224,7 @@ def get_user_bookings(request):
                 "event_location": booking.event.location,
                 "tickets_booked": booking.tickets_booked,
                 "event_image_url": booking.event.image_url,  # Add if you have this field
+                "Payment method" : booking.payment,
             })
         
         return JsonResponse({"bookings": booking_data}, status=200)
@@ -262,9 +269,6 @@ def get_stats(request):
         "revenue_labels": list(Event.objects.values_list('date', flat=True)),  # Replace with months or other labels
         "bookings": list(Booking.objects.values_list('tickets_booked', flat=True)),  # Example bookings data
         "booking_labels": list(Event.objects.values_list('name', flat=True)),  # Event names for labels
-        "users": [
-            User.objects.filter(is_active=True).count(),
-            User.objects.filter(is_active=False).count()
-        ],
+       
     }
     return JsonResponse(stats)

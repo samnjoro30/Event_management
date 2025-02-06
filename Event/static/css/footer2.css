@@ -2,7 +2,7 @@
 .dashboard-footer {
     background-color: #222;
     color: #eee;
-    padding: 40px 20px;
+    padding: 0;
     font-family: Arial, sans-serif;
   }
   
@@ -16,8 +16,8 @@
   }
   
   .footer-container div {
-    flex: 1;
-    min-width: 220px;
+    flex: none;
+    min-width: 0;
   }
   
   .footer-about p,

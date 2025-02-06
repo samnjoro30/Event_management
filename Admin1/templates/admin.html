@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/admin.css' %}">
   <link rel="stylesheet" href="{% static 'css/view.css' %}">
   <link rel="stylesheet" href="{% static 'css/upload.css' %}">
   <link rel="stylesheet" href="{% static 'css/book.css' %}">
-  <link rel="stylesheet" href="{% static 'css/header.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'css/stats.css' %}"> -->
 </head>
 <body>
   <header class="admin-header">
@@ -210,14 +211,16 @@
           {% if bookings %}
             {% for booking in bookings %}
             <div class="booking-card">
-              <p><strong>Event:</strong> {{ booking.event.name }}</p>
-              <p><strong>User:</strong> {{ booking.user.email }}</p>
-              <p><strong>Tickets:</strong> {{ booking.tickets_booked }}</p>
-              <p><strong>Date:</strong> {{ booking.booking_date }}</p>
+              
+                <p><strong>Event:</strong> {{ booking.event.name }}</p>
+                <p><strong>User:</strong> {{ booking.user.email }}</p>
+                <p><strong>Tickets:</strong> {{ booking.tickets_booked }}</p>
+                <p><strong>Date:</strong> {{ booking.booking_date }}</p>
+              
             </div>
             {% endfor %}
           {% else %}
-            <p>No bookings found.</p>
+            <p class="no-bookings-message">No bookings found.</p>
           {% endif %}
         </div>
       </section>
@@ -235,7 +238,7 @@
           </div>
           <div class="stat">
             <h3>Total Revenue</h3>
-            <p>Ksh{{ stats.total_revenue }}</p>
+            <p>Ksh {{ stats.total_revenue }}</p>
           </div>
           <div class="stat">
             <h2>Revenue</h2>
@@ -254,9 +257,11 @@
     </main>
   </div>
 
-  <script  src="{% static 'js/admin.js' %}"></script>
-  <script  src="{% static 'js/charts.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script  src="{% static 'js/stats.js' %}"></script>
+  <script  src="{% static 'js/admin.js' %}"></script>
+  <!-- cfff -->
+ 
 
 </body>
 </html>

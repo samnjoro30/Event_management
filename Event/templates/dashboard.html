@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
   <link rel="stylesheet" href="{% static 'css/body.css' %}">
   <link rel="stylesheet" href="{% static 'css/booked.css' %}">
+  <link rel="stylesheet" href="{% static 'css/popup.css' %}">
 </head>
 <body>
   <header class="dashboard-header">
@@ -68,7 +69,27 @@
         <i class="fas fa-search"></i>
       </button>
     </div>
-
+    <!--this is pop up-->
+    <div id="booking-popup" class="popup hidden">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <h3>Book Tickets</h3>
+        <form id="booking-form">
+          <label for="tickets">Number of Tickets:</label>
+          <input type="number" id="tickets" name="tickets" min="1" value="1" required>
+          <p id="total-amount"><strong>Total Amount: </strong>Ksh <span>0</span></p>
+    
+          <label for="payment-method">Payment Method:</label>
+          <select id="payment-method" name="payment_method" required>
+            <option value="mpesa">Mpesa</option>
+            <option value="event_day">Pay on Event Day</option>
+          </select>
+    
+          <button type="button" id="confirm-booking">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+    
     <!-- Quick Links -->
     <section class="quick-links">
       <h2>Quick Links</h2>
@@ -154,107 +175,64 @@
   <script src="{% static 'js/dash.js' %}" ></script>
   <script src="{% static 'js/booked.js' %}"></script>
   <script src="{% static 'js/search.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}"></script>
   <script>
     async function fetchEvents() {
-    try {
-      const response = await fetch("{% url 'api_events' %}"); // Replace with the API URL
-      const events = await response.json();
+
+      try {
+
+        const response = await fetch("{% url 'api_events' %}"); // Replace with the API URL
+        const events = await response.json();
   
     // Map the events to the UI
-      const eventsContainer = document.getElementById("events-container");
-      events.forEach(event => {
-        const eventCard = `
-          <div class="event-card">
-            <img src="${event.image_url}" alt="${event.name}">
-            <h3>${event.name}</h3>
-            <p>${event.description}</p>
-            <p><strong>Tickets Available:</strong> ${event.tickets_available}</p>
-            <p><strong>Price:</strong> Ksh${event.price}</p>
-            <p><strong>Date: </strong>${event.date}</p>
-            <p><strong>Location: </strong>${event.location}</p>
-            <button class="btn-primary book-btn" data-event-id="${event.id}">Book Now</button>
-          </div>
-       `;
-        eventsContainer.innerHTML += eventCard;
+        const eventsContainer = document.getElementById("events-container");
+        eventsContainer.innerHTML = "";
+        events.forEach(event => {
+          const eventCard = `
+            <div class="event-card">
+              <img src="${event.image_url}" alt="${event.name}">
+              <h3>${event.name}</h3>
+              <p>${event.description}</p>
+              <p><strong>Tickets Available:</strong> ${event.tickets_available}</p>
+              <p><strong>Price:</strong> Ksh${event.price}</p>
+              <p><strong>Date: </strong>${event.date}</p>
+              <p><strong>Location: </strong>${event.location}</p>
+              <button class="btn-primary book-btn" data-event-id="${event.id}">Book Now</button>
+            </div>
+          `;
+          eventsContainer.innerHTML += eventCard;
         });
+
         const bookButtons = document.querySelectorAll(".book-btn");
         console.log("Book buttons found:", bookButtons.length);
         bookButtons.forEach(button => {
           button.addEventListener("click", bookEvent);
         });
       } catch (error) {
-    console.error("Error fetching events:", error);
+          console.error("Error fetching events:", error);
+      }
     }
-   }
-  
-  // Call fetchEvents when the page loads
+    // Call fetchEvents when the page loads
     window.onload = fetchEvents;
 
-  async function bookEvent(event) {
-   const eventId = event.target.getAttribute("data-event-id");
-   const confirmation = confirm("Are you sure you want to book this event?");
-    
-    if (!confirmation) {
-        return; // If the user clicks "Cancel", do nothing
-    }
-  
-
-  try {
-      const ticketsRequested = 1;
-      const csrfToken = getCSRFToken(); // Retrieve CSRF token
-
-      console.log("CSRF Token:", csrfToken);
-      console.log("Event ID:", eventId);
-
-      const response = await fetch( `/book-event/${eventId}/`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "X-CSRFToken": csrfToken, // Fetch CSRF token
-          },
-          body: JSON.stringify({  tickets: ticketsRequested }),
-          
-
-      });
-
-      console.log("Request body:", JSON.stringify({ tickets: ticketsRequested }));
-
-      console.log("response", response);
-      if (response.ok) {
-          alert("Event booked successfully!");
-          event.target.innerHTML = "Booked";
+    function bookEvent(event) {
+      const eventId = event.target.getAttribute("data-event-id");
+      const popup = document.getElementById("booking-popup");
+      if (popup) {
+        popup.setAttribute("data-event-id", eventId); // Store event ID in the popup for later use
+        popup.classList.remove("hidden"); // Make the popup visible by removing the "hidden" class
+        popup.classList.add("visible");
       } else {
-          alert("Failed to book event. Please try again.");
-          event.target.disabled = false;
-          event.target.innerHTML = "Book Now";
+        console.error("Booking popup not found!");
       }
-  } catch (error) {
-      console.error("Error booking event:", error);
-      alert("An error occurred. Please try again.");
+    }
 
-      event.target.disabled = false;
-      event.target.innerHTML = "Book Now";
-  }
-}
 
-// Helper function to get CSRF token from cookies
-function getCSRFToken() {
-  const cookies = document.cookie.split("; ");
-  for (const cookie of cookies) {
-      if (cookie.startsWith("csrftoken=")) {
-          return cookie.split("=")[1];
-      }
-  }
-  console.error("CSRF token not found");
-  return "";
-}
+    document.getElementById("myBookingsBtn").addEventListener("click", fetchBookings);
 
-//show booking
-// Show bookings when the "View Bookings" button is clicked
-document.getElementById("myBookingsBtn").addEventListener("click", fetchBookings);
+    async function fetchBookings() {
 
-async function fetchBookings() {
-    try {
+      try {
         // Send a GET request to fetch bookings
         const response = await fetch("{% url 'my_bookings' %}"); // This fetches the data from your Django view
         const data = await response.json();
@@ -262,13 +240,11 @@ async function fetchBookings() {
         if (response.ok) {
             const bookingsContainer = document.getElementById("booking-container");
             bookingsContainer.innerHTML = "";  // Clear previous content
-
             // If no bookings are found
             if (data.bookings.length === 0) {
                 bookingsContainer.innerHTML = "<p>You have no bookings yet.</p>";
                 return;
             }
-
             // Loop through each booking and display it
             data.bookings.forEach(booking => {
             const bookingCard = `
@@ -289,15 +265,25 @@ async function fetchBookings() {
         console.error("Error fetching bookings:", error);
         alert("An error occurred while fetching your bookings. Please try again.");
     }
-}
+  }
 
+  // Helper function to get CSRF token from cookies
+  function getCSRFToken() {
+    const cookies = document.cookie.split("; ");
+    for (const cookie of cookies) {
+      if (cookie.startsWith("csrftoken=")) {
+          return cookie.split("=")[1];
+      }
+    }
+    console.error("CSRF token not found");
+    return "";
+  }
+  </script>
 
-  </script> 
   <script>
     // Add the CSRF token to the cookie (if not already present)
     document.cookie = `csrftoken={{ csrf_token }}`;
-</script>
-
+  </script>
 </body>
 </html>
 
