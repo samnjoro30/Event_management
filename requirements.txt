@@ -1,4 +1,4 @@
-aiobotocore @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_28sh5ufai0/croot/aiobotocore_1701291514455/work
+aiobotocore==2.5.4
 aiohttp @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_d0kuw1pu3l/croot/aiohttp_1707342310304/work
 aioitertools @ file:///tmp/build/80754af9/aioitertools_1607109665762/work
 aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
@@ -28,6 +28,7 @@ atomicwrites==1.4.0
 attrs @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_8d7cifg9jt/croot/attrs_1695717834289/work
 Automat @ file:///tmp/build/80754af9/automat_1600298431173/work
 autopep8 @ file:///opt/conda/conda-bld/autopep8_1650463822033/work
+awscli==1.27.64
 Babel @ file:///Users/ec2-user/ci_py311/babel_1678318085010/work
 backports.functools-lru-cache @ file:///tmp/build/80754af9/backports.functools_lru_cache_1618170165463/work
 backports.tempfile @ file:///home/linux1/recipes/ci/backports.tempfile_1610991236607/work
@@ -84,14 +85,16 @@ dill @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_95s9c
 distlib==0.3.8
 distributed @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_d9spk0ul24/croot/distributed_1701398038700/work
 distro @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_e85zz_84gd/croot/distro_1701455023959/work
+dj-database-url==2.3.0
 Django==5.0.3
 djangorestframework==3.15.2
 dnspython==2.6.1
 docstring-to-markdown @ file:///Users/ec2-user/ci_py311/docstring-to-markdown_1678326320721/work
-docutils @ file:///Users/ec2-user/ci_py311/docutils_1678316143314/work
+docutils==0.16
 entrypoints @ file:///Users/ec2-user/ci_py311/entrypoints_1678316169365/work
 et-xmlfile==1.1.0
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
+fastapi==0.115.12
 fastjsonschema @ file:///Users/ec2-user/ci_py311_2/python-fastjsonschema_1679338737111/work
 filelock @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_cd61an5em3/croot/filelock_1700591192468/work
 firebase-admin==6.6.0
@@ -123,6 +126,7 @@ grpcio==1.68.1
 grpcio-status==1.68.1
 gspread==6.0.2
 gunicorn==22.0.0
+h11==0.14.0
 h5py @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_a4au6npi7q/croot/h5py_1691589712522/work
 HeapDict @ file:///Users/ktietz/demo/mc3/conda-bld/heapdict_1630598515714/work
 holoviews @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_89ondu04ke/croot/holoviews_1707836458132/work
@@ -249,6 +253,7 @@ proto-plus==1.25.0
 protobuf==5.29.0
 psutil @ file:///Users/ec2-user/ci_py311_2/psutil_1679337242143/work
 psycopg2==2.9.9
+psycopg2-binary==2.9.10
 ptyprocess @ file:///tmp/build/80754af9/ptyprocess_1609355006118/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
 pure-eval @ file:///opt/conda/conda-bld/pure_eval_1646925070566/work
 py-cpuinfo @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_c4f2abgydv/croot/py-cpuinfo_1698068085743/work
@@ -321,11 +326,12 @@ rfc3986-validator @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000g
 rich @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_31bd74sw_8/croot/rich_1684282176000/work
 rope @ file:///Users/ec2-user/ci_py311/rope_1678379265159/work
 rpds-py @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_e9l2yxcal2/croot/rpds-py_1698945951668/work
-rsa==4.9
+rsa==4.7.2
 Rtree @ file:///Users/ec2-user/ci_py311/rtree_1678394103092/work
 ruamel-yaml-conda @ file:///Users/ec2-user/ci_py311/ruamel_yaml_1678394125333/work
 ruamel.yaml @ file:///Users/ec2-user/ci_py311/ruamel.yaml_1678379291841/work
 s3fs @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_e2sxkje5ga/croot/s3fs_1701294194461/work
+s3transfer==0.7.0
 scikit-image @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2e15ygzee5/croot/scikit-image_1707346126646/work
 scikit-learn @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_506rr4lm7n/croot/scikit-learn_1684954727383/work
 scipy @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_7e16tat7za/croot/scipy_1701295051536/work/dist/scipy-1.11.4-cp311-cp311-macosx_10_9_x86_64.whl#sha256=774af4e640d8c5d6d07392699a47f14267c7dedcf063ffb2f46cf85b19804793
@@ -354,6 +360,7 @@ spyder-kernels @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T
 SQLAlchemy @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_6bkf4b2wco/croot/sqlalchemy_1705089116227/work
 sqlparse==0.4.4
 stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
+starlette==0.46.2
 statsmodels @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6ceh3qgte0/croot/statsmodels_1689937269297/work
 streamlit @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_c2alp7j_tk/croot/streamlit_1706200496103/work
 StrEnum==0.4.15
@@ -386,6 +393,7 @@ ujson @ file:///Users/ec2-user/ci_py311/ujson_1678325349324/work
 Unidecode @ file:///tmp/build/80754af9/unidecode_1614712377438/work
 uritemplate==4.1.1
 urllib3 @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_6ecjc0andm/croot/urllib3_1707349238568/work
+uvicorn==0.34.2
 validators @ file:///tmp/build/80754af9/validators_1612286467315/work
 virtualenv==20.25.1
 w3lib @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_998i5462u5/croot/w3lib_1708642429208/work
@@ -395,6 +403,7 @@ webencodings==0.5.1
 websocket-client @ file:///Users/ec2-user/ci_py311/websocket-client_1678317758506/work
 Werkzeug==3.0.1
 whatthepatch @ file:///Users/ec2-user/ci_py311/whatthepatch_1678379478749/work
+whitenoise==6.8.2
 widgetsnbextension @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_40_pxs6vyf/croot/widgetsnbextension_1701273630538/work
 wrapt @ file:///Users/ec2-user/ci_py311/wrapt_1678323111850/work
 wurlitzer @ file:///Users/ec2-user/ci_py311/wurlitzer_1678390004531/work
