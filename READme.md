@@ -38,6 +38,8 @@ Tailored to simplify event organization and streamline attendee management.
   `Register, login, and profile management`
 - **Event Management**  
   `Create/update/delete events with rich details`
+- **Automated Emailing**
+  `an email verification once you register`
 - **Ticket System**  
   `Multiple ticket types with pricing tiers`
 - **Search & Filters**  
