@@ -102,7 +102,7 @@ python manage.py runserver
 5. Admins can view participants and manage events
 
 ## 📸 Screenshots / Demo
-![Homepage](./screenshots/home.png) 
+![Homepage](./screenshots/Event1.png) 
 
 # Contact
 For any question or Support, please Contact:
