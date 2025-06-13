@@ -1,10 +1,10 @@
-.popup {
+/* .popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(178, 167, 167, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,7 @@
   }
   
   #booking-form button {
-    background-color: #28a745;
+    background-color: #c5ccc6;
     color: white;
     padding: 10px;
     border: none;
@@ -64,4 +64,4 @@
   #booking-form button:hover {
     background-color: #218838;
   }
-  
+   */
