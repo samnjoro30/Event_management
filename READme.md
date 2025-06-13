@@ -3,6 +3,34 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 
 ***
+## 🧭 Table of Contents
+1. [About The Project](#about-the-project)  
+2. [Features](#features)  
+3. [Built With](#built-with)  
+4. [Getting Started](#getting-started)  
+   - [Prerequisites](#prerequisites)  
+   - [Installation](#installation)  
+5. [Usage](#usage)  
+6. [Screenshots / Demo](#screenshots--demo)  
+7. [Contributing](#contributing)  
+8. [License](#license)  
+9. [Contact](#contact)  
+10. [Acknowledgements](#acknowledgements)
+
+---
+
+## 📝 About The Project
+A full-stack Event Management System enabling:
+
+- Event creation, listing, and categorization  
+- User registration and authentication  
+- Admin dashboard for managing events and participants  
+- (Optionally) QR code-based check-in, payment integration, notifications, etc.
+
+Tailored to simplify event organization and streamline attendee management.
+
+---
+
 
 ## ```Features```
 
@@ -18,8 +46,16 @@
   `login, create, manage, view ticket booked for the  events`
 
 ***
+## 🛠️ Built With
+- **Back-end**: Django framework 
+- **Front-end**: HTML5, CSS3, javascript
+- **Database**: MySQL / SQLite  
+- **Optional**: JavaScript, AJAX
+---
 
-## Requirements
+# Getting Started
+
+### Requirements
  
  - **Python 3.7+**
  - **Django 3.2+**
@@ -27,35 +63,46 @@
  - **XAMPP Server**
 
 
-## ```Installation```
-create a new folder and navigate to the folder
+### ```Installation```
+
+1. **create a new folder and navigate to the folder**
 ```bash
   cd to-your-folder
 ```
-clone the repository and navigate
+2. **clone the repository and navigate**
 ```bash
 git clone https://github.com/samnjoro30/Event_management.git
 cd Event_management
 ```
-Install dependencies
+3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
-Set up enviroment variables
+4. **Set up enviroment variables**
 ```bash
 touch .env
 ```
-Run migrations
+5. **Run migrations**
 ```bash
 python manage.py migrate
 ```
 
 - Now start your XAMPP serve to connect MySQL
 
-Run this command to run development server
+6. **Run this command to run development server**
 ```bash
 python manage.py runserver
 ```
+
+## 🎯 Usage
+1. Visit `http://localhost:8000/`  
+2. Create an account  
+3. Browse existing events or create a new one (admin only)  
+4. Book for events (users)  
+5. Admins can view participants and manage events
+
+## 📸 Screenshots / Demo
+![Homepage](./screenshots/home.png) 
 
 # Contact
 For any question or Support, please Contact:
