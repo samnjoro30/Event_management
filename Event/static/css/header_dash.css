@@ -82,63 +82,63 @@
 #greeting-message {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
-/* Popup container 
+/* Popup container */
 .popup {
   position: absolute;
-  top: 60px; 
+  top: 60px; /* Adjust position relative to the icon */
   right: 10px;
-  width: 300px; 
-  background: linear-gradient(145deg, #dcdfe1, #b5cbcc); 
-  color: white; 
-  border-radius: 12px; 
-  padding: 20px; 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); 
+  width: 300px; /* Wider popup for readability */
+  background: linear-gradient(145deg, #4caf50, #379c3a); /* Attractive gradient background */
+  color: white; /* Text color for better contrast */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px; /* Space around the content */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  opacity: 0; 
-  transform: translateY(-20px); 
-  transition: all 0.3s ease; 
+  opacity: 0; /* Start invisible */
+  transform: translateY(-20px); /* Slight upward shift */
+  transition: all 0.3s ease; /* Smooth animation */
 }
 
-
+/* Visible state */
 .popup.show {
-  opacity: 1;
-  transform: translateY(0); 
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Reset position */
 }
 .hidden {
-  display: none !important; 
+  display: none !important; /* Ensures the popup is hidden */
 }
 
 .popup {
-  display: block; 
+  display: block; /* Ensure block display when visible */
 }
-/* Popup header 
+/* Popup header */
 .popup h3 {
   margin: 0 0 10px;
   font-size: 20px;
   font-weight: bold;
-  color: #fff; /* Keep header white 
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Add subtle glow 
+  color: #fff; /* Keep header white */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Add subtle glow */
 }
 
-/* Profile details 
+/* Profile details */
 .popup p {
   margin: 5px 0;
   font-size: 16px;
-  color: #f1f1f1; /* Light color for contrast 
+  color: #f1f1f1; /* Light color for contrast */
   line-height: 1.5;
 }
 
-/* Highlighted labels 
+/* Highlighted labels */
 .popup p strong {
-  color: #ffdd57; /* Golden yellow for key labels 
+  color: #ffdd57; /* Golden yellow for key labels */
 }
 
-/* Close button 
+/* Close button */
 .close-popup-btn {
-  background-color: #ff5252; /* Bright red for emphasis 
+  background-color: #ff5252; /* Bright red for emphasis */
   color: white;
   border: none;
   padding: 8px 16px;
@@ -150,19 +150,19 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Close button hover effect 
+/* Close button hover effect */
 .close-popup-btn:hover {
-  background-color: #ff0000; /* Deeper red on hover 
-  transform: scale(1.05); /* Slight zoom effect 
+  background-color: #ff0000; /* Deeper red on hover */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
-/* Close button active state 
+/* Close button active state */
 .close-popup-btn:active {
-  transform: scale(0.95); /* Shrink on click 
+  transform: scale(0.95); /* Shrink on click */
 }
 
 /* Optional: Glow animation for popup */
-/* .popup::before {
+.popup::before {
   content: '';
   position: absolute;
   top: 0;
@@ -173,7 +173,7 @@
   background: rgba(255, 255, 255, 0.15);
   z-index: -1;
   filter: blur(8px);
-} */
+}
 
 /* Typewriter Effect */
 @keyframes typing {
@@ -191,5 +191,67 @@
   }
   50% {
     border-color: #4caf50;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .header-center {
+    margin: 10px 0;
+    order: 1;
+  }
+
+  .header-right {
+    order: 2;
+    gap: 15px;
+    padding: 10px 0;
+  }
+
+  .nav-icons {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  #greeting-message {
+    font-size: 20px;
+    animation: none; /* Optional: disable typewriter animation on small screens */
+    white-space: normal; /* Allow wrapping */
+    border-right: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-btn {
+    font-size: 20px;
+  }
+
+  .logout-btn {
+    font-size: 20px;
+  }
+
+  .popup {
+    width: 90%;
+    right: 5%;
+    top: 70px;
+    padding: 15px;
+  }
+
+  .popup h3 {
+    font-size: 18px;
+  }
+
+  .popup p {
+    font-size: 14px;
+  }
+
+  .close-popup-btn {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 }

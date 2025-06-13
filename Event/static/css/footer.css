@@ -14,6 +14,8 @@
     max-width: 1200px;
     margin: 0 auto;
     gap: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   
   .footer-section {
@@ -103,5 +105,20 @@
   .footer-bottom p {
     margin: 0;
     color: #e0e0e0;
+  }
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-section {
+      text-align: center;
+    }
+  
+    .social-icons {
+      justify-content: center;
+    }
   }
   
