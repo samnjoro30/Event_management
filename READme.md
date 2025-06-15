@@ -105,18 +105,18 @@ python manage.py runserver
 
 ## 📸 Screenshots / Demo
 <div align="center">
-  <img src="screenshots/Event1.png" width="45%" alt="Screenshot 1" title="welcome layout">
-  <img src="screenshots/Event2.png" width="45%" alt="Screenshot 2" title="Admin dashboard">
+  <img src="screenshots/Event1.png" width="30%" alt="Screenshot 1" title="welcome layout">
+  <img src="screenshots/Event2.png" width="30%" alt="Screenshot 2" title="Page">
   <br>
-  <img src="screenshots/Event3.png" width="45%" alt="Screenshot 3" title="admin login">
-  <img src="screenshots/Event4.png" width="45%" alt="Screenshot 4" title="judge dashboard">
+  <img src="screenshots/Event3.png" width="30%" alt="Screenshot 3" title="client login">
+  <img src="screenshots/Event4.png" width="45%" alt="Screenshot 4" title="Event welcome">
   <br>
-  <img src="screenshots/Event5.png" width="90%" alt="Screenshot 5" title="Live Score">
-  <img src="screenshots/Event6.png" width="90%" alt="Screenshot 5" title="Live Score">
+  <img src="screenshots/Event5.png" width="45%" alt="Screenshot 5" title="Events">
+  <img src="screenshots/Event6.png" width="45%" alt="Screenshot 5" title="Admin add event">
   <br>
-  <img src="screenshots/Event7.png" width="90%" alt="Screenshot 5" title="Live Score">
-  <img src="screenshots/Event8.png" width="90%" alt="Screenshot 5" title="Live Score">
-  <img src="screenshots/Event9.png" width="90%" alt="Screenshot 5" title="Live Score">
+  <img src="screenshots/Event7.png" width="45%" alt="Screenshot 5" title="Admon view">
+  <img src="screenshots/Event8.png" width="45%" alt="Screenshot 5" title="Admin booking">
+  <img src="screenshots/Event9.png" width="90%" alt="Screenshot 5" title="Admin stat page">
 </div>
 # Contact
 For any question or Support, please Contact:
