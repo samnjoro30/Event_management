@@ -105,10 +105,10 @@ python manage.py runserver
 
 ## 📸 Screenshots / Demo
 <div align="center">
-  <img src="screenshots/Event1.png" width="30%" alt="Screenshot 1" title="welcome layout">
-  <img src="screenshots/Event2.png" width="30%" alt="Screenshot 2" title="Page">
+  <img src="screenshots/Event1.png" width="45%" alt="Screenshot 1" title="welcome layout">
+  <img src="screenshots/Event2.png" width="45%" alt="Screenshot 2" title="Page">
   <br>
-  <img src="screenshots/Event3.png" width="30%" alt="Screenshot 3" title="client login">
+  <img src="screenshots/Event3.png" width="45%" alt="Screenshot 3" title="client login">
   <img src="screenshots/Event4.png" width="45%" alt="Screenshot 4" title="Event welcome">
   <br>
   <img src="screenshots/Event5.png" width="45%" alt="Screenshot 5" title="Events">
