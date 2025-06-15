@@ -104,37 +104,20 @@ python manage.py runserver
 5. Admins can view participants and manage events
 
 ## 📸 Screenshots / Demo
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event1.png" alt="Event 1" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event2.png" alt="Event 2" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event3.png" alt="Event 3" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event4.png" alt="Event 4" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event5.png" alt="Event 5" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event6.png" alt="Event 6" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event7.png" alt="Event 7" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event8.png" alt="Event 8" style="width: 100%;">
-  </div>
-  <div style="flex: 1 1 30%;">
-    <img src="./screenshots/Event9.png" alt="Event 9" style="width: 100%;">
-  </div>
+<div align="center">
+  <img src="screenshots/Event1.png" width="45%" alt="Screenshot 1" title="welcome layout">
+  <img src="screenshots/Event2.png" width="45%" alt="Screenshot 2" title="Admin dashboard">
+  <br>
+  <img src="screenshots/Event3.png" width="45%" alt="Screenshot 3" title="admin login">
+  <img src="screenshots/Event4.png" width="45%" alt="Screenshot 4" title="judge dashboard">
+  <br>
+  <img src="screenshots/Event5.png" width="90%" alt="Screenshot 5" title="Live Score">
+  <img src="screenshots/Event6.png" width="90%" alt="Screenshot 5" title="Live Score">
+  <br>
+  <img src="screenshots/Event7.png" width="90%" alt="Screenshot 5" title="Live Score">
+  <img src="screenshots/Event8.png" width="90%" alt="Screenshot 5" title="Live Score">
+  <img src="screenshots/Event9.png" width="90%" alt="Screenshot 5" title="Live Score">
 </div>
-
 # Contact
 For any question or Support, please Contact:
  - Samuel Njoroge
