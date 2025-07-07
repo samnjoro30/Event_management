@@ -88,18 +88,22 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+DATABASE_URL = config('DATABASE_URL')
 
 DATABASES = {
-   "default":
-    {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME":  "event_management",
-        'USER': 'root',  
-        'PASSWORD': '',  
-        'HOST': '127.0.0.1',  
-        'PORT': '3307'
-    }
- }
+    'default': dj_database_url.parse(DATABASE_URL)
+}
+# DATABASES = {
+#    "default":
+#     {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME":  config('DATABASE'),
+#         'USER': config('USER'),  
+#         'PASSWORD': config('PASSWORD'),  
+#         'HOST': config('HOST'),  
+#         'PORT': config('PORT')
+#     }
+#  }
 
 
 # Password validation
