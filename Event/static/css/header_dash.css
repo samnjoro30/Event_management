@@ -88,7 +88,7 @@
   top: 60px; /* Adjust position relative to the icon */
   right: 10px;
   width: 300px; /* Wider popup for readability */
-  background: linear-gradient(145deg, #4caf50, #379c3a); /* Attractive gradient background */
+  background: linear-gradient(145deg, #caccca, #bfccf2);  /*Attractive gradient background */
   color: white; /* Text color for better contrast */
   border-radius: 12px; /* Rounded corners */
   padding: 20px; /* Space around the content */
