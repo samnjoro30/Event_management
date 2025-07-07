@@ -1,4 +1,6 @@
 # Event management System
+
+
 ![Django](https://img.shields.io/badge/Django-3.2-green.svg)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 
@@ -118,6 +120,10 @@ python manage.py runserver
   <img src="screenshots/Event8.png" width="45%" alt="Screenshot 5" title="Admin booking">
   <img src="screenshots/Event9.png" width="90%" alt="Screenshot 5" title="Admin stat page">
 </div>
+
+# Contributions
+ 
+
 # Contact
 For any question or Support, please Contact:
  - Samuel Njoroge
