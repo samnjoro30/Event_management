@@ -93,17 +93,7 @@ DATABASE_URL = config('DATABASE_URL')
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL)
 }
-# DATABASES = {
-#    "default":
-#     {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME":  config('DATABASE'),
-#         'USER': config('USER'),  
-#         'PASSWORD': config('PASSWORD'),  
-#         'HOST': config('HOST'),  
-#         'PORT': config('PORT')
-#     }
-#  }
+
 
 
 # Password validation
