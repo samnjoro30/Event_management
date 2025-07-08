@@ -13,6 +13,7 @@ import json
 import csv
 import cloudinary
 import cloudinary.uploader
+from decouple import config
 
 import logging
 
@@ -20,9 +21,9 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 cloudinary.config(
-    cloud_name="denau3vzn", 
-    api_key="518891139551556",        
-    api_secret="kD7QghpndGh5eVBirF2HQiyw9_0"  
+    cloud_name=config('CLOUD_NAME'), 
+    api_key=config('CLOUD_API'),        
+    api_secret=config('API_SECRET')  
 )
 def login_view(request):
     if request.method == 'POST':
