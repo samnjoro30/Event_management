@@ -53,8 +53,8 @@ Tailored to simplify event organization and streamline attendee management.
 ## 🛠️ Built With
 - **Back-end**: Django framework 
 - **Front-end**: HTML5, CSS3, javascript
-- **Database**: MySQL / SQLite  
-- **Optional**: JavaScript, AJAX
+- **Database**: MySQL / SQLite  / Postgre DB(cloud)
+- **Optional**: JavaScript, cloudinary
 ---
 
 # Getting Started
@@ -62,7 +62,7 @@ Tailored to simplify event organization and streamline attendee management.
 ### Requirements
  
  - **Python 3.7+**
- - **Django 3.2+**
+ - **Django 5.2+**
  - **MySQL**
  - **XAMPP Server**
 
