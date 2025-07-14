@@ -23,19 +23,20 @@ pymysql.install_as_MySQLdb()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9z^3#eyo3#nzjc%)=np9)65!w97&h2154+_*zga2-_t@2p2^2u"
+SECRET_KEY = config('SECURE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = [
     'event-management-chry.onrender.com',
+   
 ]
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
-#STATICFILES_DIRS = []  # Or comment it out
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = []  # Or comment it out
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Application definition
@@ -86,7 +87,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "Event_Management.wsgi.application"
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8000/",
     "https://event-management-chry.onrender.com",
 ]
 
