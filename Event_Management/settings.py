@@ -26,12 +26,12 @@ pymysql.install_as_MySQLdb()
 SECRET_KEY = config('SECURE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "*"
+    # "*"
     #'http://127.0.0.1:8000/'
-    #'event-management-chry.onrender.com',
+    'event-management-chry.onrender.com',
    
 ]
 
