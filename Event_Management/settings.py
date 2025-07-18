@@ -26,17 +26,20 @@ pymysql.install_as_MySQLdb()
 SECRET_KEY = config('SECURE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    'event-management-chry.onrender.com',
+    "*"
+    #'http://127.0.0.1:8000/'
+    #'event-management-chry.onrender.com',
    
 ]
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 #STATICFILES_DIRS = []  # Or comment it out
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Application definition

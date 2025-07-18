@@ -46,10 +46,14 @@
     <main class="content">
       <!-- Add Event Section -->
       <section id="add-event-section" class="admin-section visible">
-        <h2>Add Event</h2>
+        <div className="title-h1">
+          <h1>Add Event</h3>
+        </div>
+        
         <form action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <!-- Event Name -->
+          <!-- <h3>Add Event</h3> -->
           <div class="form-group">
             <label for="event-name">Event Name:</label>
             <input 

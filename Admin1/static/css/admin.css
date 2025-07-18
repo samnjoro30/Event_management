@@ -9,9 +9,9 @@ body {
   /*header*/
 /* Style the header */
 header.admin-header {
-  position: relative; /* To position content over the video */
-  height: 250px; /* Adjust as needed */
-  overflow: hidden; /* Hide overflow from the video */
+  position: sticky; 
+  height: 150px; 
+  overflow: hidden; 
   color: white;
 }
 
@@ -22,8 +22,8 @@ header.admin-header {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the video covers the header without distortion */
-  z-index: -1; /* Places the video behind the content */
+  object-fit: cover; 
+  z-index: -1;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -57,8 +57,9 @@ a {
   
   /* Admin Container */
 .admin-container {
+    margin-top: 5px;
     display: flex;
-    min-height: 100vh;
+    max-height: 77vh;
   }
   
   /* Sidebar */
@@ -67,6 +68,9 @@ a {
     background-color: #ffffff;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    /* border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; */
   }
   
   .sidebar h3 {
