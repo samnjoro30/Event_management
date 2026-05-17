@@ -29,14 +29,15 @@ SECRET_KEY = config('SECURE')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    # "*"
-    #'http://127.0.0.1:8000/'
+    
     'event-management-chry.onrender.com',
    
 ]
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+   BASE_DIR / "static"
+]
 #STATIC_ROOT = BASE_DIR / "staticfiles"
 #STATICFILES_DIRS = []  # Or comment it out
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
